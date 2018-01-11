@@ -68,7 +68,9 @@ public class Controller : MonoBehaviour {
 			_nextName = "___empty___";
 
 		_nodes.AddLast(Instantiate(NodePrefab));
-		_nodes.Last.Value.transform.position=new Vector3(0,0,0);
+		float x = (-8 + (1.5f * (_nodes.Count / 8)));
+		float y= (4.5f - (1*((_nodes.Count) % 8)));
+		_nodes.Last.Value.transform.position=new Vector3(x,y,0);
 
 		AddButton.SetActive(true);
 	}
