@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AddDialogController.cs" />
+    <Compile Include="Assets\Scripts\CamController.cs" />
     <Compile Include="Assets\Scripts\ConditionData.cs" />
     <Compile Include="Assets\Scripts\ConditionGUIController.cs" />
     <Compile Include="Assets\Scripts\Controller.cs" />
