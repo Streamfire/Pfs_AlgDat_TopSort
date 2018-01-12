@@ -18,7 +18,7 @@ public class AddDialogController : MonoBehaviour {
 	/// </summary>
 	public void BtnCnclDown()
 	{
-		_mainController.GetComponent<Controller>().DialogClosed("");
+		_mainController.GetComponent<Controller>().DialogClosed("___cancel___");
 		Destroy(gameObject.transform.root.gameObject);
 	}
 	/// <summary>
