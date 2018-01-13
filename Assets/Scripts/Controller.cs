@@ -2,25 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Main Controller script, anything that affects all aspects of the Application should end up here.
+/// </summary>
 public class Controller : MonoBehaviour {
 
+	/// <summary>
+	/// Referenz auf den Button unten links zum hinzufügen von Nodes
+	/// </summary>
 	public GameObject AddButton;
+	/// <summary>
+	/// Referenz auf das NodePrefab
+	/// </summary>
 	public GameObject NodePrefab;
+	/// <summary>
+	/// Prefab für den Dialog zum hinzufügen neuer nodes
+	/// </summary>
 	public GameObject DialogPrefab;
 	
-
+	/// <summary>
+	/// der nächste Default Name für eine Node
+	/// </summary>
 	private int _nextDefaultName;
+	/// <summary>
+	/// Der nächste Custom Name für die NÄCHSTE Node die einen abfragt.
+ 	/// </summary>
 	private string _nextName;
+	
+	/// <summary>
+	/// Liste der Node Objekte
+	/// </summary>
 	private LinkedList<GameObject> _nodes;
 
-	// Use this for initialization
+	/// <summary>
+	/// zur initialisierung des GameControllerObjects
+	/// </summary>
 	void Start () {
 		_nextDefaultName = 0;
 		_nextName = "";
 		_nodes = new LinkedList<GameObject>();
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Einmal pro Frame aufgerufen,
+	/// prüft ob ESC gedrückt, wenn ja Programm beenden.
+	/// </summary>
 	void Update () {
 		
 
@@ -36,7 +62,6 @@ public class Controller : MonoBehaviour {
 	/// <returns></returns>
 	public string getNextName()
 	{
-		
 		if(_nextName== "___empty___")
 		{
 			_nextDefaultName++;
@@ -49,7 +74,8 @@ public class Controller : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// shows a dialoge to add a customnamed prefab of a node
+	/// shows a dialog to add a customnamed prefab of a node.
+	/// Deactivates the Button it is connected to, so only 1 Dialog at a time is open.
 	/// </summary>
 	public void AddButtonClicked()
 	{
@@ -59,26 +85,37 @@ public class Controller : MonoBehaviour {
 
 	/// <summary>
 	/// called when either one of the dialog buttons was pressed
-	/// when there's no string given the dialog was canceled,
-	/// otherwise the given string becomes the name of the new node.
 	/// </summary>
-	/// <param name="nodeName">the name of the newly created node</param>
+	/// <param name="nodeName">the name of the newly created node, "___empty___" to use a default name
+	/// "___cancel___" to not create a node at all</param>
 	public void DialogClosed(string nodeName)
 	{if (nodeName != "___cancel___")
 		{
-			if (nodeName != "___empty___")
-			{
-				_nextName = nodeName;
-			}
-			else
-				_nextName = "___empty___";
-
-			_nodes.AddLast(Instantiate(NodePrefab));
 			float x = (-8 + (1.5f * (_nodes.Count / 8)));
 			float y = (4.5f - (1 * ((_nodes.Count) % 8)));
-			_nodes.Last.Value.transform.position = new Vector3(x, y, 0);
+
+			AddNode(x, y, nodeName);
 		}
 		AddButton.SetActive(true);
 	}
+
+	/// <summary>
+	/// Adds a Node to the end of the _nodes List.
+	/// </summary>
+	public void AddNode(float x,float y, string name)
+	{
+		if (name != "___empty___")
+		{
+			_nextName = name;
+		}
+		else
+		{
+			_nextName = "___empty___";
+		}
+
+		_nodes.AddLast(Instantiate(NodePrefab));
+		_nodes.Last.Value.transform.position = new Vector3(x, y, 0);
+	}
+
 
 }

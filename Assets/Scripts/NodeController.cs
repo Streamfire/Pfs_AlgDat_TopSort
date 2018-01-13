@@ -2,16 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controller fuer ein Node Objekt.
+/// </summary>
 public class NodeController : MonoBehaviour {
 
-
+	/// <summary>
+	/// Das TextObjekt das am Node dranhängt.
+	/// </summary>
 	public GameObject TextObject;
 
-
+	/// <summary>
+	/// Referenz auf den MainController um dessen methoden nutzen zu können
+	/// </summary>
 	private GameObject _mainController;
+	/// <summary>
+	/// Schnellzugriff auf die TextMesh Komnponente des TextObjekts.
+	/// </summary>
 	private TextMesh _text;
+
+	/// <summary>
+	/// Name der Node.
+	/// </summary>
 	private string _name;
 
+	/// <summary>
+	/// Get/Set für den Namen der Node
+	/// </summary>
 	public string Name
 	{
 		get

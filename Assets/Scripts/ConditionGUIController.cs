@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ConditionGUIController : MonoBehaviour {
 
 	// Use this for initialization

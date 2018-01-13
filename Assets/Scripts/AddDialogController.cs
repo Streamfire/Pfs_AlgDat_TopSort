@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Dialog zum hinzufügen eines neuen Knotens
+/// </summary>
 public class AddDialogController : MonoBehaviour {
 
+	/// <summary>
+	/// Main Controller Referenz
+	/// </summary>
 	private GameObject _mainController;
+	/// <summary>
+	/// Referenz auf das Eingabefeld des Dialogs
+	/// </summary>
 	public GameObject TextField;
 
 	private void Start()
