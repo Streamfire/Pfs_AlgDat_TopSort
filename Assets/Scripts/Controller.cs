@@ -35,6 +35,11 @@ public class Controller : MonoBehaviour {
 	private LinkedList<GameObject> _nodes;
 
 	/// <summary>
+	/// list of Conditions that apply while sorting.
+	/// </summary>
+	private LinkedList<ConditionData> _cond;
+
+	/// <summary>
 	/// zur initialisierung des GameControllerObjects
 	/// </summary>
 	void Start () {
@@ -115,6 +120,15 @@ public class Controller : MonoBehaviour {
 
 		_nodes.AddLast(Instantiate(NodePrefab));
 		_nodes.Last.Value.transform.position = new Vector3(x, y, 0);
+	}
+
+	/// <summary>
+	///Adds a Condition to the list of conditions.
+	/// </summary>
+	/// <param name="condition"></param>
+	public void AddCondition(ConditionData condition)
+	{
+		_cond.AddLast(condition);
 	}
 
 
