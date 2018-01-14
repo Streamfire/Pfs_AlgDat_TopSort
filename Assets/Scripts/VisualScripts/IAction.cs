@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 
 namespace VisualScripts
@@ -12,3 +12,4 @@ namespace VisualScripts
 		IEnumerator Run ();
 	}
 }
+
