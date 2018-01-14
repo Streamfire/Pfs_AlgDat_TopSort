@@ -40,12 +40,44 @@ public class Controller : MonoBehaviour {
 	private LinkedList<ConditionData> _cond;
 
 	/// <summary>
+	/// Getter for the condition list.
+	/// </summary>
+	public LinkedList<ConditionData> Cond
+	{
+		get
+		{
+			return _cond;
+		}
+
+		set
+		{
+			_cond = value;
+		}
+	}
+
+	/// <summary>
+	/// Getter for the nodelist.
+	/// </summary>
+	public LinkedList<GameObject> Nodes
+	{
+		get
+		{
+			return _nodes;
+		}
+
+		set
+		{
+			_nodes = value;
+		}
+	}
+
+	/// <summary>
 	/// zur initialisierung des GameControllerObjects
 	/// </summary>
 	void Start () {
 		_nextDefaultName = 0;
 		_nextName = "";
-		_nodes = new LinkedList<GameObject>();
+		Nodes = new LinkedList<GameObject>();
 	}
 	
 	/// <summary>
@@ -96,8 +128,8 @@ public class Controller : MonoBehaviour {
 	public void DialogClosed(string nodeName)
 	{if (nodeName != "___cancel___")
 		{
-			float x = (-8 + (1.5f * (_nodes.Count / 8)));
-			float y = (4.5f - (1 * ((_nodes.Count) % 8)));
+			float x = (-8 + (1.5f * (Nodes.Count / 8)));
+			float y = (4.5f - (1 * ((Nodes.Count) % 8)));
 
 			AddNode(x, y, nodeName);
 		}
@@ -118,8 +150,8 @@ public class Controller : MonoBehaviour {
 			_nextName = "___empty___";
 		}
 
-		_nodes.AddLast(Instantiate(NodePrefab));
-		_nodes.Last.Value.transform.position = new Vector3(x, y, 0);
+		Nodes.AddLast(Instantiate(NodePrefab));
+		Nodes.Last.Value.transform.position = new Vector3(x, y, 0);
 	}
 
 	/// <summary>
@@ -128,7 +160,7 @@ public class Controller : MonoBehaviour {
 	/// <param name="condition"></param>
 	public void AddCondition(ConditionData condition)
 	{
-		_cond.AddLast(condition);
+		Cond.AddLast(condition);
 	}
 
 
