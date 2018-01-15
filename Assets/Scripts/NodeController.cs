@@ -25,6 +25,11 @@ public class NodeController : MonoBehaviour {
 	/// Name der Node.
 	/// </summary>
 	private string _name;
+	
+	/// <summary>
+    	/// Anzahl der eingehenden Kanten in die Node 
+    	/// </summary>
+    	public int _conditionNumberIn;
 
 	/// <summary>
 	/// Get/Set für den Namen der Node
@@ -49,6 +54,7 @@ public class NodeController : MonoBehaviour {
 		_text = TextObject.GetComponent<TextMesh>();
 
 		Name = _mainController.GetComponent<Controller>().getNextName();
+		_conditionsNumberIn = 0;
 	}
 	
 	// Update is called once per frame

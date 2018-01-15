@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 /// <summary>
 /// The Main Controller script, anything that affects all aspects of the Application should end up here.
@@ -163,5 +164,19 @@ public class Controller : MonoBehaviour {
 		Cond.AddLast(condition);
 	}
 
+	public void AddFileButtonClicked()
+	{
+		// übergebe Pärchenweise den Filter (Beschreibung, Extension)
+		string[] filters = {"Textfile","txt"};
+		string path = EditorUtility.OpenFilePanelWithFilters("Choose a coded Textfile", "", filters);
+		if (path.Length != 0)
+		{
+			//var fileContent = File.ReadAllBytes(path);
 
+
+			// Beispiel Button Text einlesen
+			//var test = AddFileButton.GetComponentInChildren<UnityEngine.UI.Text>() as UnityEngine.UI.Text;
+			//test.text = "ABC";
+		}
+	}
 }
