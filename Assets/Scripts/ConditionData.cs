@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Enum fuer die States einer Kondition Vor und Nach
-/// </summary>
-public enum CONDITION
-{
-VOR,NACH, NONE
-}
+
 
 /// <summary>
 /// Datenstruktur die eine einzelne Kondition für zwei Nodes speichert.
@@ -24,10 +18,6 @@ public class ConditionData{
 	/// </summary>
 	private GameObject _nodeB;
 
-	/// <summary>
-	/// Die Kondition die angibt ob A vor B oder A nach B.
-	/// </summary>
-	private CONDITION _condition;
 
 	/// <summary>
 	/// Standardkonstruktor.
@@ -36,7 +26,6 @@ public class ConditionData{
 	{
 		NodeA = null;
 		NodeB = null;
-		Condition = CONDITION.NONE;
 	}
 
 	/// <summary>
@@ -48,19 +37,6 @@ public class ConditionData{
 	{
 		this.NodeA = NodeA;
 		this.NodeB = NodeB;
-		Condition = CONDITION.NONE;
-	}
-	/// <summary>
-	/// Konstruktor der 2 Nodes und eine Condition vereint.
-	/// </summary>
-	/// <param name="NodeA">Ausgangsknoten</param>
-	/// <param name="NodeB">Zielknoten</param>
-	/// <param name="c">Kondition aus der Condition enum</param>
-	public ConditionData(GameObject NodeA, GameObject NodeB,CONDITION c)
-	{
-		this.NodeA = NodeA;
-		this.NodeB = NodeB;
-		Condition = c;
 	}
 
 	/// <summary>
@@ -95,19 +71,4 @@ public class ConditionData{
 		}
 	}
 
-	/// <summary>
-	/// Get/Set für die Kondition.
-	/// </summary>
-	public CONDITION Condition
-	{
-		get
-		{
-			return _condition;
-		}
-
-		set
-		{
-			_condition = value;
-		}
-	}
 }
